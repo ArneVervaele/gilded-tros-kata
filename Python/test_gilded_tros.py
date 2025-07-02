@@ -126,7 +126,7 @@ class GildedTrosTest(unittest.TestCase):
 
     # Legendary item has quality 80
     def test_legendary_quality_80(self):
-        items = [Item("B-DAWG Keychain", 10, 80)]
+        items = [Item("B-DAWG Keychain", 10, 75)]
         gilded_tros = GildedTros(items)
         gilded_tros.update_quality()
         self.assertEqual(80, items[0].quality)

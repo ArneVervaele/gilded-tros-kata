@@ -42,6 +42,10 @@ class GoodWine(RegularItem):
 ## Legendary    
 class Legendary(RegularItem):
 
+    def __init__(self, item):
+        super().__init__(item)
+        self.item.quality = 80
+
     # Sell_in and quality do not change
     def update(self):
         pass
