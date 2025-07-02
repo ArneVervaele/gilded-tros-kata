@@ -64,3 +64,10 @@ class BackstagePass(RegularItem):
             return 2
         else:
             return 1
+        
+# Smelly Items
+class SmellyItem(RegularItem):
+
+    def calculate_quality_change(self):
+        # Quality decreases twice as fast
+        return -2 if self.item.sell_in >= 0 else -4
