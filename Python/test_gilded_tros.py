@@ -94,6 +94,21 @@ class GildedTrosTest(unittest.TestCase):
         self.assertEqual(-1, items[0].sell_in)
         self.assertEqual(0, items[0].quality)
 
+    # Smelly items
+    def test_smelly_item(self):
+        items = [Item("Duplicate Code", 10, 20)]
+        gilded_tros = GildedTros(items)
+        gilded_tros.update_quality()
+        self.assertEqual(9, items[0].sell_in)
+        self.assertEqual(18, items[0].quality)
+
+    # Smelly items expired
+    def test_smelly_item_expired(self):
+        items = [Item("Duplicate Code", -1, 6)]
+        gilded_tros = GildedTros(items)
+        gilded_tros.update_quality()
+        self.assertEqual(-2, items[0].sell_in)
+        self.assertEqual(2, items[0].quality)
 
 if __name__ == '__main__':
     unittest.main()
