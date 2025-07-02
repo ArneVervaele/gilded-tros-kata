@@ -110,5 +110,26 @@ class GildedTrosTest(unittest.TestCase):
         self.assertEqual(-2, items[0].sell_in)
         self.assertEqual(2, items[0].quality)
 
+    # Negative quality not allowed
+    def test_negative_quality(self):
+        items = [Item("Ring of Cleansening Code", 10, 0)]
+        gilded_tros = GildedTros(items)
+        gilded_tros.update_quality()
+        self.assertEqual(0, items[0].quality)
+
+    # Quality cannot be over 50
+    def test_quality_over_50(self):
+        items = [Item("Good Wine", 10, 50)]
+        gilded_tros = GildedTros(items)
+        gilded_tros.update_quality()
+        self.assertEqual(50, items[0].quality)
+
+    # Legendary item has quality 80
+    def test_legendary_quality_80(self):
+        items = [Item("B-DAWG Keychain", 10, 80)]
+        gilded_tros = GildedTros(items)
+        gilded_tros.update_quality()
+        self.assertEqual(80, items[0].quality)
+
 if __name__ == '__main__':
     unittest.main()
